@@ -1,13 +1,31 @@
 <?php
 /**
- * IP Limitter システムナビ
+ * CuIpLimiter: Restrict by IP address Plugin for baserCMS <https://basercms.net>
+ * Copyright (c) Catchup, Inc. <https://catchup.co.jp/>
  *
- * @package ip_limitter.config
+ * @copyright        Copyright (c) Catchup, Inc.
+ * @link            https://catchup.co.jp Catchup Project
+ * @license            https://opensource.org/license/mit MIT License
  */
-$config['BcApp.adminNavi.ip_limitter'] = array(
-		'name'		=> 'IPリミッター プラグイン',
-		'contents'	=> array(
-			array('name' => '設定', 
-				'url' => array('admin' => true, 'plugin' => 'ip_limitter', 'controller' => 'ip_limitter_configs', 'action' => 'index'))
-	)
-);
+
+return [
+    'BcApp' => [
+        'adminNavigation' => [
+            'Systems' => [
+                'Plugin' => [
+                    'menus' => [
+                        'CuIpLimiter' => [
+                            'title' => 'IPリミッター設定',
+                            'url' => [
+                                'prefix' => 'Admin',
+                                'plugin' => 'CuIpLimiter',
+                                'controller' => 'IpLimiterConfigs',
+                                'action' => 'index'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+];

@@ -1,7 +1,7 @@
-IpLimitter
+CuIpLimiter
 ==========
 baserCMS Plugin  
-Copyright 2011 - 2017, ryuring <http://ryuring.com>
+Copyright (c) Catchup, Inc. <https://catchup.co.jp/>
 
 License
 -------
