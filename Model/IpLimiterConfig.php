@@ -1,7 +1,7 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * [IpLimitter] 設定モデル
+ * [IpLimiter] 設定モデル
  *
  * PHP version 5
  *
@@ -10,11 +10,11 @@
  *
  * @copyright		Copyright 2011 - 2012, Catchup, Inc.
  * @link			http://www.e-catchup.jp Catchup, Inc.
- * @package			ip_limitter.models
+ * @package			ip_limiter.models
  * @since			Baser v 2.0.0
  * @version			$Revision$
  * @modifiedby		$LastChangedBy$
  * @lastmodified	$Date$
  * @license			MIT lincense
  */
-class IpLimitterConfig extends AppModel {}
+class IpLimiterConfig extends AppModel {}

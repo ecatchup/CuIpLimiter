@@ -1,13 +1,13 @@
 <?php
-class IpLimitterControllerEventListener extends BcControllerEventListener {
-	
+class CuIpLimiterControllerEventListener extends BcControllerEventListener {
+
 	public $events = array('startup');
-	
+
 	public function startup(CakeEvent $event) {
-		
+
 		$Controller = $event->subject();
-		$IpLimitterConfig = ClassRegistry::init('IpLimitter.IpLimitterConfig');
-		$datas = $IpLimitterConfig->findExpanded();
+		$IpLimiterConfig = ClassRegistry::init('CuIpLimiter.IpLimiterConfig');
+		$datas = $IpLimiterConfig->findExpanded();
 		if($datas) {
 			if(empty($datas['allowed_ip'])) {
 				return;
@@ -45,5 +45,5 @@ class IpLimitterControllerEventListener extends BcControllerEventListener {
 			}
 		}
 	}
-	
+
 }

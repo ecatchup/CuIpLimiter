@@ -1,10 +1,10 @@
-<?php 
-/* SVN FILE: $Id: ip_limitter_configs.php 192 2011-06-04 15:53:54Z ryuring $ */
-/* IpLimitterConfigs schema generated on: 2011-06-03 23:06:38 : 1307112218*/
-class IpLimitterConfigsSchema extends CakeSchema {
-	public $name = 'IpLimitterConfigs';
+<?php
+/* SVN FILE: $Id: ip_limiter_configs.php 192 2011-06-04 15:53:54Z ryuring $ */
+/* IpLimiterConfigs schema generated on: 2011-06-03 23:06:38 : 1307112218*/
+class IpLimiterConfigsSchema extends CakeSchema {
+	public $name = 'IpLimiterConfigs';
 
-	public $file = 'ip_limitter_configs.php';
+	public $file = 'ip_limiter_configs.php';
 
 	public $connection = 'plugin';
 
@@ -15,7 +15,7 @@ class IpLimitterConfigsSchema extends CakeSchema {
 	public function after($event = array()) {
 	}
 
-	public $ip_limitter_configs = array(
+	public $ip_limiter_configs = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'value' => array('type' => 'text', 'null' => true, 'default' => NULL),

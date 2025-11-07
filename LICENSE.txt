@@ -1,4 +1,4 @@
-IpLimitter : baserCMS Plugin
+CuIpLimiter : baserCMS Plugin
 Copyright 2014 - 2017, ryuring <http://ryuring.com/>
 
 About License

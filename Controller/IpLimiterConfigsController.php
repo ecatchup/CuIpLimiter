@@ -1,7 +1,7 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * [IpLimitter] 設定ページ
+ * [IpLimiter] 設定ページ
  *
  * PHP version 5
  *
@@ -10,7 +10,7 @@
  *
  * @copyright		Copyright 2011 - 2012, Catchup, Inc.
  * @link			http://www.e-catchup.jp Catchup, Inc.
- * @package			ip_limitter.controllers
+ * @package			ip_limiter.controllers
  * @since			Baser v 2.0.0
  * @version			$Revision$
  * @modifiedby		$LastChangedBy$
@@ -18,22 +18,22 @@
  * @license			MIT lincense
  */
 App::import('Controller', 'Plugins');
-class IpLimitterConfigsController extends AppController {
+class IpLimiterConfigsController extends AppController {
 /**
  * コントローラー名
  * @var string
  * @access public
  */
-	public $name = 'IpLimitterConfigs';
+	public $name = 'IpLimiterConfigs';
 /**
  * モデル
  * @var array
  * @access public
  */
-	public $uses = array('Plugin', 'IpLimitter.IpLimitterConfig');
+	public $uses = array('Plugin', 'CuIpLimiter.IpLimiterConfig');
 /**
  * コンポーネント
- * 
+ *
  * @var array
  * @access public
  */
@@ -46,7 +46,7 @@ class IpLimitterConfigsController extends AppController {
  */
 	public $crumbs = array(
 		array('name' => 'プラグイン管理', 'url' => array('plugin' => '', 'controller' => 'plugins', 'action' => 'index')),
-		array('name' => 'IPリミッター管理', 'url' => array('plugin' => 'ip_limitter', 'controller' => 'ip_limitter_configs', 'action' => 'index'))
+		array('name' => 'IPリミッター管理', 'url' => array('plugin' => 'cu_ip_limiter', 'controller' => 'ip_limiter_configs', 'action' => 'index'))
 	);
 /**
  * IPリミッター設定
@@ -54,17 +54,17 @@ class IpLimitterConfigsController extends AppController {
 	public function admin_index() {
 
 		if(!$this->request->data) {
-			$this->request->data = array('IpLimitterConfig' => $this->IpLimitterConfig->findExpanded());
+			$this->request->data = array('IpLimiterConfig' => $this->IpLimiterConfig->findExpanded());
 		} else {
-			$this->IpLimitterConfig->set($this->request->data);
-			if($this->IpLimitterConfig->validates()) {
-				$this->IpLimitterConfig->saveKeyValue($this->request->data);
+			$this->IpLimiterConfig->set($this->request->data);
+			if($this->IpLimiterConfig->validates()) {
+				$this->IpLimiterConfig->saveKeyValue($this->request->data);
 				$this->setMessage('IPリミッターの設定を保存しました。', false, true);
 				$this->redirect(['action' => 'index']);
 			}
 		}
 		$this->pageTitle = 'IPリミッター設定';
-		$this->help = 'ip_limitter_configs_index';
+		$this->help = 'ip_limiter_configs_index';
 		$this->render('index');
 
 	}

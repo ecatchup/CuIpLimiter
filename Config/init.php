@@ -1,7 +1,7 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * [IpLimitter] インストール
+ * [CuIpLimiter] インストール
  *
  * PHP version 5
  *
@@ -10,7 +10,7 @@
  *
  * @copyright		Copyright 2011 - 2012, Catchup, Inc.
  * @link			http://www.e-catchup.jp Catchup, Inc.
- * @package			ip_limitter.config
+ * @package			ip_limiter.config
  * @since			Baser v 2.0.0
  * @version			$Revision$
  * @modifiedby		$LastChangedBy$
@@ -20,4 +20,4 @@
 /**
  * データベース初期化
  */
-	$this->Plugin->initDb('IpLimitter');
+	$this->Plugin->initDb('CuIpLimiter');

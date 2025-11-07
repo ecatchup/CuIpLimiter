@@ -1,7 +1,7 @@
 <?php
 /* SVN FILE: $Id$ */
 /**
- * [IpLimitter] Bootstrap
+ * [CuIpLimiter] Bootstrap
  *
  * PHP version 5
  *
@@ -10,7 +10,7 @@
  *
  * @copyright		Copyright 2011 - 2012, Catchup, Inc.
  * @link			http://www.e-catchup.jp Catchup, Inc.
- * @package			ip_limitter.config
+ * @package			ip_limiter.config
  * @since			Baser v 2.0.0
  * @version			$Revision$
  * @modifiedby		$LastChangedBy$
@@ -40,8 +40,8 @@ if(!function_exists('getClientIP')){
 	}
 }
 
-$IpLimitterConfig = ClassRegistry::init('IpLimitter.IpLimitterConfig');
-$datas = $IpLimitterConfig->findExpanded();
+$IpLimiterConfig = ClassRegistry::init('CuIpLimiter.IpLimiterConfig');
+$datas = $IpLimiterConfig->findExpanded();
 if($datas) {
 	if(empty($datas['allowed_ip'])) {
 		return;
@@ -54,7 +54,7 @@ if($datas) {
 			return;
 		}
 	}
-	
+
 	if(empty($datas['limit_folders'])) {
 		header("HTTP/1.0 404 Not Found");
 	} else {
