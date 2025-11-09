@@ -57,6 +57,7 @@ if($datas) {
 
 	if(empty($datas['limit_folders'])) {
 		header("HTTP/1.0 404 Not Found");
+		exit;
 	} else {
 		$limitFolders = explode(',', $datas['limit_folders']);
 		$folder = explode('/', getUrlParamFromEnv());
@@ -65,8 +66,10 @@ if($datas) {
 			if(in_array($folder, $limitFolders)) {
 				if(empty($datas['redirect_url'])) {
 					header("HTTP/1.0 404 Not Found");
+					exit;
 				} else {
 					header("Location: ".$datas['redirect_url']);
+					exit;
 				}
 			}
 		}
