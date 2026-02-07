@@ -38,16 +38,7 @@ class IpLimiterConfigsController extends AppController {
  * @access public
  */
 	public $components = array('BcAuth', 'Cookie', 'BcAuthConfigure');
-/**
- * ぱんくずナビ
- *
- * @var string
- * @access public
- */
-	public $crumbs = array(
-		array('name' => 'プラグイン管理', 'url' => array('plugin' => '', 'controller' => 'plugins', 'action' => 'index')),
-		array('name' => 'IPリミッター管理', 'url' => array('plugin' => 'cu_ip_limiter', 'controller' => 'ip_limiter_configs', 'action' => 'index'))
-	);
+
 /**
  * IPリミッター設定
  */
@@ -59,11 +50,11 @@ class IpLimiterConfigsController extends AppController {
 			$this->IpLimiterConfig->set($this->request->data);
 			if($this->IpLimiterConfig->validates()) {
 				$this->IpLimiterConfig->saveKeyValue($this->request->data);
-				$this->setMessage('IPリミッターの設定を保存しました。', false, true);
+				$this->BcMessage->setSuccess('IPリミッターの設定を保存しました。');
 				$this->redirect(['action' => 'index']);
 			}
 		}
-		$this->pageTitle = 'IPリミッター設定';
+		$this->pageTitle = 'IP制限設定';
 		$this->help = 'ip_limiter_configs_index';
 		$this->render('index');
 

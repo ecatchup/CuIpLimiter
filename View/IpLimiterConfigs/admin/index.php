@@ -21,6 +21,11 @@
 <script type="text/javascript">
 $(window).load(function() {
 	$("#IpLimiterConfigAllowedIp").focus();
+	$("#BtnSubmit").click(function(){
+		if(!confirm('許可するIPアドレスはお間違いないですか？が間違っているとアクセスできなくなってしまいますのでご注意ください。')) {
+			return false;
+		}
+	})
 });
 </script>
 
@@ -54,7 +59,10 @@ $(window).load(function() {
 
 <div class="submit bca-actions">
 	<div class="bca-actions__main">
-		<?php echo $this->BcForm->button(__d('baser', '保存'), ['div' => false, 'class' => 'button bca-btn',
+		<?php echo $this->BcForm->button(__d('baser', '保存'), [
+			'id' => 'BtnSubmit',
+			'div' => false,
+			'class' => 'button bca-btn',
 			'data-bca-btn-type' => 'save',
 			'data-bca-btn-size' => 'lg',
 			'data-bca-btn-width' => 'lg',
