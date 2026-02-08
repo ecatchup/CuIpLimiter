@@ -46,7 +46,8 @@ if($datas) {
 	if(empty($datas['allowed_ip'])) {
 		return;
 	}
-	$allowedIp = preg_quote($datas['allowed_ip']);
+	$basicAllowedIp = Configure::read('IpLimiter.basicAllowedIp');
+	$allowedIp = preg_quote(implode(',', $basicAllowedIp)) . ',' . preg_quote($datas['allowed_ip']);
 	$patterns = str_replace("\*", '.+?', $allowedIp);
 	$patterns = explode(',', $patterns);
 	foreach($patterns as $pattern) {
