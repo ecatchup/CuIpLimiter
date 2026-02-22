@@ -17,6 +17,7 @@
  * @lastmodified	$Date$
  * @license			MIT lincense
  */
+if(isConsole()) return;
 if(!function_exists('getClientIP')){
 	function getClientIP($safe = true) {
 		if (!$safe && env('HTTP_X_FORWARDED_FOR') != null) {
