@@ -32,9 +32,18 @@ class CuIpLimiterUtil
                 $ipaddr = preg_replace('/(?:,.*)/', '', $tmpipaddr);
             }
         }
-        return trim($ipaddr);
+        return trim((string)$ipaddr);
     }
 
+    /**
+     * 現在のクライアントIPがアクセスを許可されているか
+     *
+     * - 管理画面で設定した allowed_ip が空の場合は制限なし（全許可）
+     * - 設定ファイルの `IpLimiter.basicAllowedIp`（配列・管理画面とは別の基本許可IP）があれば allowed_ip と合わせて判定する
+     * - `*` はグループ指定（例: 192.168.0.*）、カンマ区切りで複数指定可
+     *
+     * @return bool
+     */
     public static function isAllowed()
     {
         $IpLimiterConfigsTable = \Cake\ORM\TableRegistry::getTableLocator()->get('CuIpLimiter.IpLimiterConfigs');
@@ -42,11 +51,17 @@ class CuIpLimiterUtil
         if (!$entity || empty($entity['allowed_ip'])) {
             return true;
         }
-        $allowedIp = preg_quote($entity['allowed_ip']);
-        $patterns = str_replace("\*", '.+?', $allowedIp);
-        $patterns = explode(',', $patterns);
-        foreach($patterns as $pattern) {
-            if (preg_match('/' . $pattern . '/', self::getClientIp())) {
+        $allowedIps = explode(',', $entity['allowed_ip']);
+        $basicAllowedIp = Configure::read('IpLimiter.basicAllowedIp');
+        if (!empty($basicAllowedIp) && is_array($basicAllowedIp)) {
+            $allowedIps = array_merge($basicAllowedIp, $allowedIps);
+        }
+        $clientIp = self::getClientIp();
+        foreach($allowedIps as $allowedIp) {
+            $allowedIp = trim((string)$allowedIp);
+            if ($allowedIp === '') continue;
+            $pattern = str_replace('\*', '.+?', preg_quote($allowedIp, '/'));
+            if (preg_match('/' . $pattern . '/', $clientIp)) {
                 return true;
             }
         }

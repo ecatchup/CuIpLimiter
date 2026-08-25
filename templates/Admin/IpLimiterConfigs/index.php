@@ -11,14 +11,19 @@
  * @var \BaserCore\View\BcAdminAppView $this
  * @var \Cake\Datasource\EntityInterface $entity
  */
-$this->BcAdmin->setTitle('IPリミッター設定');
+$this->BcAdmin->setTitle('IP制限設定');
 $this->BcAdmin->setHelp('ip_limiter_configs_index');
 ?>
 
 
 <script type="text/javascript">
-  $(window).load(function () {
+  $(function () {
     $("#allowed-ip").focus();
+    $("#BtnSave").click(function () {
+      if (!confirm('許可するIPアドレスはお間違いないですか？間違っているとアクセスできなくなってしまいますのでご注意ください。')) {
+        return false;
+      }
+    });
   });
 </script>
 

@@ -16,7 +16,7 @@ namespace CuIpLimiter\Controller\Admin;
 class IpLimiterConfigsController extends \BaserCore\Controller\Admin\BcAdminAppController
 {
     /**
-     * IPリミッター設定
+     * IP制限設定
      */
     public function index()
     {
@@ -29,8 +29,8 @@ class IpLimiterConfigsController extends \BaserCore\Controller\Admin\BcAdminAppC
             );
             if (!$entity->hasErrors()) {
                 $this->IpLimiterConfigs->saveKeyValue($entity->toArray());
-                $this->BcMessage->setInfo('IPリミッターの設定を保存しました。');
-                $this->redirect(['action' => 'index']);
+                $this->BcMessage->setSuccess('IP制限の設定を保存しました。');
+                return $this->redirect(['action' => 'index']);
             } else {
                 $this->BcMessage->setError('入力エラーです。内容を修正してください。');
             }
